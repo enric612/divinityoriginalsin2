@@ -151,6 +151,8 @@
             width: 100%;
             border: 2px solid var(--gold);
             border-radius: 4px;
+            min-height: 400px;
+            background-color: #111;
         }
 
         .quick-stats {
@@ -203,6 +205,12 @@
 
         ul.strategy-list li { margin-bottom: 10px; }
         
+        .alt-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -276,7 +284,7 @@
             <div class="char-grid">
                 <div class="char-sidebar">
                     <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/sebille-portrait.jpg" 
-                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Sebille'" alt="Sebille">
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Sebille+(Wiki+Error)'" alt="Sebille">
                     <div class="quick-stats">
                         <p><span class="stat-label">Rol</span> <span class="stat-val">Blood Knight</span></p>
                         <p><span class="stat-label">Atribut</span> <span class="stat-val">FORÇA (STR)</span></p>
@@ -342,7 +350,7 @@
             <div class="char-grid">
                 <div class="char-sidebar">
                     <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/ifan-portrait.jpg" 
-                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Ifan'" alt="Ifan">
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Ifan+(Wiki+Error)'" alt="Ifan">
                     <div class="quick-stats">
                         <p><span class="stat-label">Rol</span> <span class="stat-val">Ranger</span></p>
                         <p><span class="stat-label">Atribut</span> <span class="stat-val">DESTRESA (FIN)</span></p>
@@ -403,7 +411,7 @@
             <div class="char-grid">
                 <div class="char-sidebar">
                     <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/lohse-portrait.jpg" 
-                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Lohse'" alt="Lohse">
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Lohse+(Wiki+Error)'" alt="Lohse">
                     <div class="quick-stats">
                         <p><span class="stat-label">Rol</span> <span class="stat-val">Physical Mage</span></p>
                         <p><span class="stat-label">Atribut</span> <span class="stat-val">INTEL·LIGÈNCIA</span></p>
@@ -459,7 +467,7 @@
             <div class="char-grid">
                 <div class="char-sidebar">
                     <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/fane-portrait.jpg" 
-                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Fane'" alt="Fane">
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Fane+(Wiki+Error)'" alt="Fane">
                     <div class="quick-stats">
                         <p><span class="stat-label">Rol</span> <span class="stat-val">Invocador</span></p>
                         <p><span class="stat-label">Atribut</span> <span class="stat-val">WITS / MEM</span></p>
@@ -504,31 +512,105 @@
             </div>
         </div>
 
-        <!-- EXTRAS -->
+        <!-- EXTRAS (RED PRINCE & BEAST) -->
         <div id="extras" class="char-content">
-            <div class="panel">
-                <h2>Builds Alternatives (Per si canvies l'equip)</h2>
-                
-                <h3>El Princep Roig (Red Prince) - Tanc Ofensiu</h3>
-                <p>Substitut ideal per a la Sebille si vols més resistència.</p>
-                <ul>
-                    <li><strong>Atributs:</strong> Força i Constitució.</li>
-                    <li><strong>Habilitats:</strong> Warfare (Max).</li>
-                    <li><strong>Clau:</strong> <span class="badge-skill">Escut Rebotador (Bouncing Shield)</span>. Aquesta habilitat és la teva font de mal principal. Necessites l'escut amb més armadura física de la botiga cada nivell.</li>
-                    <li><strong>Talents:</strong> Oportunista, Torturador (el seu alè de foc aplica cremada a través d'armadura màgica).</li>
-                </ul>
-
-                <hr style="border-color: #333; margin: 30px 0;">
-
-                <h3>Beast - Assassí (Rogue)</h3>
-                <p>Substitut per a l'Ifan si prefereixes melé.</p>
-                <ul>
-                    <li><strong>Atributs:</strong> Destresa (Finesse).</li>
-                    <li><strong>Habilitats:</strong> Scoundrel i Warfare (Pujats paral·lelament).</li>
-                    <li><strong>Clau:</strong> Dagues Duals. Sempre atacar per l'esquena (Backstab) per Crític garantit.</li>
-                    <li><strong>Talents:</strong> <span class="badge-talent">The Pawn (El Peó)</span>. Et dona 1 AP de moviment gratis per posicionar-te a l'esquena cada torn.</li>
-                </ul>
+            
+            <!-- RED PRINCE -->
+            <div class="char-grid alt-section">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/red-prince-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Red+Prince+(Wiki+Error)'" alt="Red Prince">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Alternativa</span> <span class="stat-val">Sebille</span></p>
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Tanc Ofensiu</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">1 Mà + Escut</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Red Prince: El Capità Escut</h3>
+                    <p>Utilitza l'Escut com a arma principal. És l'opció segura per si la Sebille mor massa.</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Detalls Clau</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>+2 <span class="badge-stat">FORÇA</span><br>Warfare 1, Poly 1</td>
+                                <td>Talent: <span class="badge-talent">Oportunista</span>. Skill: <em>Tentacle Lash</em> (Escala amb Força).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-4</strong></td>
+                                <td>+1 CON (Escuts), +STR<br>Warfare 2</td>
+                                <td><strong>CLAU:</strong> Aprèn <span class="badge-skill">Bouncing Shield</span>. És el teu atac més fort. No depèn de la teva força, sinó de l'armadura de l'escut.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5-8</strong></td>
+                                <td>Max STR<br>Poly 2 (Wings)</td>
+                                <td>Talent Lv8: <span class="badge-talent">Duresa (Picture of Health)</span>. Et dona +vida per cada punt en Warfare.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9+</strong></td>
+                                <td>Max Warfare (10)</td>
+                                <td>Talent Lv13: <span class="badge-talent">Torturador</span> (Perquè el teu alè de foc apliqui crema ignorant armadura). Skill: <em>Overpower</em> (Nivell 16).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <!-- BEAST -->
+            <div class="char-grid">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/beast-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Beast+(Wiki+Error)'" alt="Beast">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Alternativa</span> <span class="stat-val">Ifan</span></p>
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Murri (Rogue)</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">Dagues Duals</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Beast: L'Assassí de l'Ombra</h3>
+                    <p>Molta mobilitat i dany crític garantit si ataques per l'esquena.</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Detalls Clau</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>+2 <span class="badge-stat">FIN</span><br>Scoundrel 1, Warfare 1</td>
+                                <td>Talent: <span class="badge-talent">The Pawn (El Peó)</span>. Et dona 1 AP de moviment gratis per posar-te a l'esquena.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-4</strong></td>
+                                <td>Max FIN<br>Scoundrel 2</td>
+                                <td>Skills: <em>Adrenalina, Backlash</em> (Salta a l'esquena), <em>Sawtooth Knife</em> (Ignora Armadura).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5-8</strong></td>
+                                <td>Max FIN<br>Warfare a 5</td>
+                                <td>Pugem Warfare pel dany base. Talent Lv8: <span class="badge-talent">Oportunista</span> o <span class="badge-talent">Dual Wielder</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9+</strong></td>
+                                <td>Warfare (10), Scoundrel (Max)</td>
+                                <td>Talent Lv13: <span class="badge-talent">Parry Master</span> (+Esquiva). Beast és molt resistent per ser nan.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
     </div>
