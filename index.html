@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Definitiva - Divinity Original Sin 2</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #d4c5a3;
+            --text-highlight: #ffbd4a;
+            --accent-red: #8a2be2; /* Canviat a to màgic/fosc */
+            --blood: #a31616;
+            --border: #5c5035;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-title: 'Times New Roman', serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://divinity.game/static/images/media/artworks/dos2-artwork-01.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--text-highlight);
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            color: var(--text-highlight);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        h2 {
+            color: var(--text-highlight);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Team Overview */
+        .team-strategy {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        .role-phys { background-color: var(--blood); color: white; }
+        .role-supp { background-color: #2e8b57; color: white; }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background-color: #2b2b2b;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            flex: 1 1 150px;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            background-color: #3d3d3d;
+            color: var(--text-highlight);
+        }
+
+        .tab-btn.active {
+            background-color: var(--blood);
+            color: white;
+            border-color: var(--text-highlight);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Character Content */
+        .character-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .character-content.active {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .char-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border);
+            padding: 20px;
+        }
+
+        .char-img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--text-highlight);
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            background: #121212;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        .stat-label {
+            display: block;
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-highlight);
+        }
+
+        .skills-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-left: 3px solid var(--text-highlight);
+        }
+
+        .progression-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .progression-table th, .progression-table td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .progression-table th {
+            background-color: #2b2b2b;
+            color: var(--text-highlight);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .character-content.active {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+        }
+
+        .highlight { color: var(--text-highlight); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Divinity Original Sin 2</h1>
+    <p>Guia d'Equip Optimitzat - "The Physical God Squad"</p>
+</header>
+
+<div class="container">
+
+    <!-- Estrategia General -->
+    <section class="team-strategy">
+        <h2>L'Equip Perfecte: Full Physical Damage</h2>
+        <p>Aquesta guia està dissenyada per maximitzar l'eficiència utilitzant un equip que es centra exclusivament en el <strong>Dany Físic</strong>. Això permet eliminar l'armadura dels enemics ràpidament i aplicar efectes de control (Knockdown) sense haver de preocupar-se per resistències elementals.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-label">Main DPS (Melee)</span>
+                <span class="stat-value">Sebille</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Ranged DPS</span>
+                <span class="stat-value">Ifan</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Magic Physical / Nuke</span>
+                <span class="stat-value">Lohse</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Summoner / Support</span>
+                <span class="stat-value">Fane</span>
+            </div>
+        </div>
+        
+        <h3>Estratègia de Combat Ràpida</h3>
+        <ol>
+            <li><strong>Iniciativa:</strong> Sebille o Fane comencen el combat.</li>
+            <li><strong>Setup:</strong> Sebille usa <em>Sacrifici de Carn</em> per crear sang.</li>
+            <li><strong>L'Invocador:</strong> Fane invoca l'Incarnate sobre la sang (Blood Incarnate = Dany Físic massiu).</li>
+            <li><strong>El Control:</strong> Sebille usa <em>Ariet</em> o <em>Trepitjada</em> per tombar els enemics sense armadura.</li>
+            <li><strong>El Nuke:</strong> Lohse ajunta els cadàvers amb Teleport i usa <em>Explosió de Cadàver</em>.</li>
+            <li><strong>La Neteja:</strong> Ifan remata els supervivents des de les altures.</li>
+        </ol>
+    </section>
+
+    <!-- Navegació Personatges -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openChar(event, 'Sebille')">Sebille</button>
+        <button class="tab-btn" onclick="openChar(event, 'Ifan')">Ifan ben-Mezd</button>
+        <button class="tab-btn" onclick="openChar(event, 'Lohse')">Lohse</button>
+        <button class="tab-btn" onclick="openChar(event, 'Fane')">Fane</button>
+        <button class="tab-btn" onclick="openChar(event, 'RedPrince')">Red Prince</button>
+        <button class="tab-btn" onclick="openChar(event, 'Beast')">Beast</button>
+    </div>
+
+    <!-- CONTINGUT: SEBILLE -->
+    <div id="Sebille" class="character-content active">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/sebille-portrait.jpg" alt="Sebille" class="char-img">
+                <h3>Sebille</h3>
+                <span class="role-badge role-phys">Cavaller de Sang</span>
+                <p>La reina del DPS cos a cos. Pega fort, es mou ràpid i es cura matant.</p>
+                <hr>
+                <p><strong>Civil:</strong> Persuasió (Líder)</p>
+                <p><strong>Arma:</strong> 2 Mans (Destral/Mall)</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Atributs & Habilitats</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">FORÇA (STR)</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">ENGINY (WITS)</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 1</span><span class="stat-value">Warfare (Max)</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 2</span><span class="stat-value">2-Handed</span></div>
+                </div>
+
+                <h4>Talents Clau</h4>
+                <div class="skills-list">
+                    <ul>
+                        <li><strong>Verdugo (Executioner):</strong> +2 AP en matar.</li>
+                        <li><strong>Oportunista:</strong> Atacs gratis si fugen.</li>
+                        <li><strong>Armadura Viva:</strong> Regenera armadura màgica quan et cures.</li>
+                    </ul>
+                </div>
+
+                <h4>Guia de Leveo</h4>
+                <table class="progression-table">
+                    <tr><th>Nivell</th><th>Acció</th></tr>
+                    <tr><td>1</td><td>Warfare +1, Polymorph +1. Skill: Tentacle Lash.</td></tr>
+                    <tr><td>2-3</td><td>Pillar Adrenalina (Scoundrel 1). Talent: Verdugo.</td></tr>
+                    <tr><td>4-8</td><td>Necromància +2 (per curar-se). Maximitza STR.</td></tr>
+                    <tr><td>Equip</td><td>Set del Devorador (Devourer Set).</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTINGUT: IFAN -->
+    <div id="Ifan" class="character-content">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/ifan-portrait.jpg" alt="Ifan" class="char-img">
+                <h3>Ifan ben-Mezd</h3>
+                <span class="role-badge role-phys">Ranger / Arquero</span>
+                <p>La mort des de lluny. Destrossa armadures i elimina objectius clau.</p>
+                <hr>
+                <p><strong>Civil:</strong> Barata (Bartering)</p>
+                <p><strong>Arma:</strong> Ballesta</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Atributs & Habilitats</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">DESTRESA (FIN)</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">ENGINY (WITS)</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 1</span><span class="stat-value">Warfare (Max)</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 2</span><span class="stat-value">Huntsman (2-3)</span></div>
+                </div>
+
+                <h4>Talents Clau</h4>
+                <div class="skills-list">
+                    <ul>
+                        <li><strong>Verdugo:</strong> Imprescindible.</li>
+                        <li><strong>Cap Calent (Hothead):</strong> +10% Crític (fàcil mantenir vida al màxim).</li>
+                        <li><strong>Home Llunyà:</strong> +2m abast.</li>
+                    </ul>
+                </div>
+
+                <h4>Guia de Leveo</h4>
+                <table class="progression-table">
+                    <tr><th>Nivell</th><th>Acció</th></tr>
+                    <tr><td>1</td><td>Huntsman +1, Warfare +1.</td></tr>
+                    <tr><td>2-3</td><td>Retirada Tàctica (Mobilitat). Ballesta 'Shadow's Eye' (Zaleskar).</td></tr>
+                    <tr><td>Mid Game</td><td>Punts a Warfare (puja el mal físic). Huntsman només per skills.</td></tr>
+                    <tr><td>Equip</td><td>Set del Voltor (Vulture Set).</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTINGUT: LOHSE -->
+    <div id="Lohse" class="character-content">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/lohse-portrait.jpg" alt="Lohse" class="char-img">
+                <h3>Lohse</h3>
+                <span class="role-badge role-phys">Maga de Sang</span>
+                <p>Nigromant. Utilitza encanteris per fer mal físic massiu en àrea.</p>
+                <hr>
+                <p><strong>Civil:</strong> Mestre del Saber</p>
+                <p><strong>Arma:</strong> Vareta + Escut</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Atributs & Habilitats</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">INTEL·LIGÈNCIA</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">MEMÒRIA</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 1</span><span class="stat-value">Warfare (Max)</span></div>
+                    <div class="stat-box"><span class="stat-label">Combat 2</span><span class="stat-value">Necro (3) / Hydro (2)</span></div>
+                </div>
+
+                <h4>Talents Clau</h4>
+                <div class="skills-list">
+                    <ul>
+                        <li><strong>Afinitat Elemental:</strong> Encanteris barats si estàs sobre sang.</li>
+                        <li><strong>Sortilegi Salvatge:</strong> Permet que els encanteris facin Crític.</li>
+                    </ul>
+                </div>
+
+                <h4>Habilitats Especials</h4>
+                <p><strong>Explosió de Cadàver:</strong> Combina llibre Pyro + Necro. Fes explotar els morts.</p>
+                <p><strong>Grasp of the Starved:</strong> L'encanteri definitiu de l'Acte 2.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTINGUT: FANE -->
+    <div id="Fane" class="character-content">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/fane-portrait.jpg" alt="Fane" class="char-img">
+                <h3>Fane</h3>
+                <span class="role-badge role-supp">Invocador</span>
+                <p>El 5è membre del grup. Invoca dimonis, controla el temps i obre panys.</p>
+                <hr>
+                <p><strong>Civil:</strong> Robatori (Thievery)</p>
+                <p><strong>Arma:</strong> Vareta + Escut</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Atributs & Habilitats</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">INICIATIVA</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">CONSTITUCIÓ</span></div>
+                    <div class="stat-box"><span class="stat-label">Prioritat</span><span class="stat-value">Invocació 10</span></div>
+                </div>
+
+                <h4>Estratègia de Build</h4>
+                <p>La prioritat absoluta és arribar a <strong>Invocació nivell 10</strong> el més aviat possible per desbloquejar el <em>Champion Incarnate</em>.</p>
+                
+                <h4>Skills Clau</h4>
+                <ul>
+                    <li><strong>Conjure Incarnate:</strong> Invoca sempre sobre SANG.</li>
+                    <li><strong>Power/Farsight Infusion:</strong> Buffa la teva invocació.</li>
+                    <li><strong>Time Warp (Fane):</strong> Dona un torn extra al teu DPS principal.</li>
+                    <li><strong>Totems:</strong> Suport extra.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTINGUT: RED PRINCE -->
+    <div id="RedPrince" class="character-content">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/red-prince-portrait.jpg" alt="Red Prince" class="char-img">
+                <h3>The Red Prince</h3>
+                <span class="role-badge role-phys">Tanc Ofensiu</span>
+                <p>Alternativa a Sebille. Un guerrer amb escut que controla el camp de batalla.</p>
+                <hr>
+                <p><strong>Civil:</strong> Persuasió</p>
+                <p><strong>Arma:</strong> Espasa + Escut</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Build: Capità de Batalla</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">FORÇA</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">CONSTITUCIÓ</span></div>
+                    <div class="stat-box"><span class="stat-label">Habilitat</span><span class="stat-value">Warfare</span></div>
+                </div>
+                <p>Utilitza l'habilitat <strong>Escut Rebotador (Bouncing Shield)</strong> per fer mal massiu a distància calculat segons l'armadura del teu escut, no els teus stats.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTINGUT: BEAST -->
+    <div id="Beast" class="character-content">
+        <div class="char-sidebar">
+            <div class="char-card">
+                <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/beast-portrait.jpg" alt="Beast" class="char-img">
+                <h3>Beast</h3>
+                <span class="role-badge role-phys">Murri / Rogue</span>
+                <p>Alternativa a Ifan. Assassí de dagues duals que busca l'esquena.</p>
+                <hr>
+                <p><strong>Civil:</strong> Sigil / Robatori</p>
+                <p><strong>Arma:</strong> Dagues Duals</p>
+            </div>
+        </div>
+        <div class="char-details">
+            <div class="char-card">
+                <h3>Build: Assassin de l'Ombra</h3>
+                <div class="stats-grid">
+                    <div class="stat-box"><span class="stat-label">Principal</span><span class="stat-value">DESTRESA</span></div>
+                    <div class="stat-box"><span class="stat-label">Secundari</span><span class="stat-value">ENGINY</span></div>
+                    <div class="stat-box"><span class="stat-label">Habilitat</span><span class="stat-value">Scoundrel</span></div>
+                </div>
+                <p>La clau és el moviment. Utilitza <strong>Backlash</strong> per saltar a l'esquena de l'enemic i garantir Crítics. El talent passiu nan li dona vida extra per sobreviure a melé.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openChar(evt, charName) {
+        var i, tabcontent, tablinks;
+        
+        // Amagar tot el contingut
+        tabcontent = document.getElementsByClassName("character-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+
+        // Treure la classe active dels botons
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        // Mostrar el contingut actual i activar el botó
+        document.getElementById(charName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
