@@ -3,84 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia DOS2: Physical God Squad</title>
+    <title>Guia Mestra DOS2 - The Physical God Squad</title>
     <style>
         :root {
-            --bg-dark: #0e0e10;
-            --panel-bg: #1b1b1f;
-            --text-main: #d0d0d0;
+            --bg-deep: #0b0b0d;
+            --bg-panel: #16161a;
+            --text-main: #d4d4d4;
+            --text-muted: #999;
             --gold: #c8aa6e;
-            --gold-dim: #8c734b;
+            --gold-light: #e6c88b;
             --blood: #8a1c1c;
-            --highlight: #6495ed;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-header: 'Times New Roman', serif;
+            --mana: #40e0d0;
+            --border: #4a4a4a;
+            --font-body: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-title: 'Cinzel', 'Trajan Pro', serif;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            font-family: var(--font-main);
+            font-family: var(--font-body);
             margin: 0;
-            padding: 0;
-            background-image: linear-gradient(to bottom, #0e0e10, #16161a);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, #2a2a30 0%, #0b0b0d 80%);
+            min-height: 100vh;
         }
 
-        /* HEADER ESTIL DIVINITY */
+        /* HEADER */
         header {
             text-align: center;
-            padding: 3rem 1rem;
-            border-bottom: 3px double var(--gold);
-            background: radial-gradient(circle at center, #2a2a30 0%, #0e0e10 100%);
+            padding: 4rem 1rem;
+            border-bottom: 4px double var(--gold);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,1));
+            position: relative;
         }
 
         h1 {
-            font-family: var(--font-header);
+            font-family: var(--font-title);
             color: var(--gold);
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin: 0;
-            text-transform: uppercase;
             letter-spacing: 4px;
-            text-shadow: 2px 2px 5px black;
+            text-shadow: 0 0 20px rgba(200, 170, 110, 0.2);
         }
 
-        h2 { color: var(--gold); border-bottom: 1px solid var(--gold-dim); padding-bottom: 5px; }
-        h3 { color: var(--text-main); font-weight: bold; margin-top: 20px; }
+        .subtitle {
+            color: var(--blood);
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
 
-        /* CONTAINER */
+        /* LAYOUT */
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
 
-        /* STRATEGY BOX */
-        .strategy-box {
-            background: rgba(138, 28, 28, 0.1);
-            border: 1px solid var(--blood);
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 5px;
+        /* INTRO & SOCIAL */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        /* TABS NAVIGATION */
-        .tabs {
+        .panel {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .panel h2 {
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* SOCIAL TABLE */
+        .social-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .social-table th { text-align: left; color: var(--gold-light); padding: 8px; border-bottom: 1px solid #333; }
+        .social-table td { padding: 8px; border-bottom: 1px solid #222; }
+        .highlight-civ { color: var(--mana); font-weight: bold; }
+
+        /* TABS */
+        .tabs-container {
+            margin-top: 2rem;
+        }
+
+        .tabs-nav {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .tab-btn {
-            background: #25252b;
-            color: #aaa;
+            background: #222;
+            color: #888;
             border: 1px solid #444;
-            padding: 15px 30px;
+            padding: 1rem 2rem;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
             cursor: pointer;
-            font-family: var(--font-header);
-            font-size: 1.2rem;
-            transition: 0.3s;
+            transition: 0.3s all;
             text-transform: uppercase;
         }
 
@@ -89,385 +125,446 @@
             background: var(--blood);
             color: white;
             border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(138, 28, 28, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 28, 28, 0.4);
         }
 
         /* CHARACTER CONTENT */
         .char-content {
-            display: none;
-            background-color: var(--panel-bg);
-            border: 1px solid #333;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            animation: fadeIn 0.5s;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
         }
+        .char-content.active { display: block; }
 
-        .char-content.active { display: grid; grid-template-columns: 300px 1fr; gap: 30px; }
+        .char-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
 
         @media (max-width: 900px) {
-            .char-content.active { grid-template-columns: 1fr; }
+            .intro-grid, .char-grid { grid-template-columns: 1fr; }
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* SIDEBAR IMAGES */
-        .char-img {
+        /* SIDEBAR */
+        .char-sidebar img {
             width: 100%;
-            border: 3px solid var(--gold-dim);
+            border: 2px solid var(--gold);
             border-radius: 4px;
-            margin-bottom: 15px;
         }
 
-        .civil-box {
+        .quick-stats {
             background: #111;
             padding: 15px;
+            margin-top: 15px;
             border-left: 3px solid var(--gold);
         }
-        .civil-box strong { color: var(--gold); }
+        .quick-stats p { margin: 8px 0; border-bottom: 1px dashed #333; padding-bottom: 5px; }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
+        .stat-val { float: right; color: var(--gold-light); font-weight: bold; }
 
-        /* DETAILED TABLES */
-        table {
+        /* LEVELING TABLE */
+        .level-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 0.95rem;
         }
 
-        th {
-            background: #2b2b2b;
+        .level-table th {
+            background: #25252b;
             color: var(--gold);
-            padding: 12px;
-            border: 1px solid #444;
+            padding: 15px;
             text-align: left;
-            font-family: var(--font-header);
-            letter-spacing: 1px;
+            border: 1px solid #444;
         }
 
-        td {
-            padding: 12px;
-            border: 1px solid #444;
+        .level-table td {
+            padding: 15px;
+            border: 1px solid #333;
             vertical-align: top;
         }
 
-        tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+        .level-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+        /* COLORS & BADGES */
+        .badge-skill { color: #ffbd4a; font-weight: bold; }
+        .badge-talent { color: #ff6b6b; font-weight: bold; }
+        .badge-gear { color: #40e0d0; font-weight: bold; }
+        .badge-stat { color: #8fd156; font-weight: bold; }
+
+        /* TIPS SECTION */
+        .tips-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #1a1a1a;
+            border-top: 4px solid var(--gold);
+        }
+
+        ul.strategy-list li { margin-bottom: 10px; }
         
-        .level-col { width: 10%; font-weight: bold; color: var(--highlight); }
-        .attr-col { width: 25%; }
-        .action-col { width: 65%; }
-
-        /* HIGHLIGHTS */
-        .skill { color: #ffbd4a; font-weight: bold; }
-        .talent { color: #ff6b6b; font-weight: bold; }
-        .gear { color: #40e0d0; font-weight: bold; }
-
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Divinity: Original Sin 2</h1>
-    <div style="color: var(--gold-dim); margin-top: 10px; font-style: italic;">Guia d'Equip "Full Physical" - Nivell a Nivell</div>
+    <div class="subtitle">Guia Integral: "The Physical God Squad"</div>
 </header>
 
 <div class="container">
 
-    <div class="strategy-box">
-        <h3>Estratègia de Grup: "The Physical Train"</h3>
-        <p>Aquest equip funciona perquè <strong>TOTS</strong> ataquen l'Armadura Física. No perdis el temps amb foc o verí.</p>
-        <ul>
-            <li><strong>Ordre d'Iniciativa recomanat:</strong> Sebille (Prepara sang) > Fane (Invoca sobre sang) > Lohse (Explota) > Ifan (Remata).</li>
-            <li><strong>Gestió Civil:</strong> Sebille (Persuasió), Fane (Robatori), Lohse (Saber), Ifan (Barata). No ho canviïs mai.</li>
+    <!-- INTRODUCCIÓ I SOCIAL -->
+    <div class="intro-grid">
+        <div class="panel">
+            <h2>Filosofia del Grup: 100% Dany Físic</h2>
+            <p>Per jugar de la forma més eficient i "trencar" el joc, ignorarem completament l'armadura màgica. Si els 4 personatges peguen a l'armadura física, els enemics cauen en el primer torn.</p>
+            <p>Aquest equip combina el màxim dany (Sebille/Ifan) amb el millor control de masses (Lohse/Fane) utilitzant sang i nigromància.</p>
+            <h3>Rotació Perfecta</h3>
+            <ol>
+                <li><strong>Sebille:</strong> Sagna (Sacrifici) + Adrenalina + Trenca armadura.</li>
+                <li><strong>Fane:</strong> Invoca el dimoni sobre la sang de Sebille (Dimoni de Sang = Dany Físic).</li>
+                <li><strong>Lohse:</strong> Teletransporta cadàvers i els fa explotar.</li>
+                <li><strong>Ifan:</strong> Remata els supervivents des de dalt.</li>
+            </ol>
+        </div>
+        
+        <div class="panel">
+            <h2>Gestió Social (Habilitats Civils)</h2>
+            <p>És vital no barrejar punts. Assigna un rol a cadascú i no el canviïs mai.</p>
+            <table class="social-table">
+                <tr>
+                    <td>Sebille</td>
+                    <td class="highlight-civ">PERSUASIÓ</td>
+                    <td>(Personatge Principal)</td>
+                </tr>
+                <tr>
+                    <td>Fane</td>
+                    <td class="highlight-civ">ROBATORI</td>
+                    <td>(No necessita ganxos)</td>
+                </tr>
+                <tr>
+                    <td>Lohse</td>
+                    <td class="highlight-civ">MESTRE SABER</td>
+                    <td>(Identificar objectes)</td>
+                </tr>
+                <tr>
+                    <td>Ifan</td>
+                    <td class="highlight-civ">BARATA</td>
+                    <td>(Vendre car / Comprar barat)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓ -->
+    <div class="tabs-container">
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="openChar(event, 'sebille')">Sebille (Warrior)</button>
+            <button class="tab-btn" onclick="openChar(event, 'ifan')">Ifan (Ranger)</button>
+            <button class="tab-btn" onclick="openChar(event, 'lohse')">Lohse (Necro)</button>
+            <button class="tab-btn" onclick="openChar(event, 'fane')">Fane (Summoner)</button>
+            <button class="tab-btn" onclick="openChar(event, 'extras')">Extres (Red Prince/Beast)</button>
+        </div>
+
+        <!-- SEBILLE -->
+        <div id="sebille" class="char-content active">
+            <div class="char-grid">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/sebille-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Sebille'" alt="Sebille">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Blood Knight</span></p>
+                        <p><span class="stat-label">Atribut</span> <span class="stat-val">FORÇA (STR)</span></p>
+                        <p><span class="stat-label">Habilitat 1</span> <span class="stat-val">WARFARE</span></p>
+                        <p><span class="stat-label">Habilitat 2</span> <span class="stat-val">2-HANDED</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">Destral/Mall 2 Mans</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Full de Ruta: Sebille</h3>
+                    <p>La teva màquina de matar. Entra, mata, es cura, repeteix.</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Skills, Talents i Equip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>+2 <span class="badge-stat">FORÇA</span><br>1 Warfare, 1 Polymorph</td>
+                                <td>Talent: <span class="badge-talent">Verdugo (Executioner)</span>.<br>Skills: <em>Tentacle Lash, Battering Ram, Battle Stomp</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>+2 <span class="badge-stat">FORÇA</span><br>1 Scoundrel</td>
+                                <td>Aprèn <span class="badge-skill">Adrenalina</span>. <br><em>Combo:</em> Flesh Sacrifice (+1AP) + Adrenaline (+2AP) = Inici explosiu.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>+2 <span class="badge-stat">FORÇA</span><br>Warfare a 2</td>
+                                <td>Talent: <span class="badge-talent">Oportunista</span>.<br>Aprèn <em>Whirlwind</em> (Remolí).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>+1 <span class="badge-stat">FORÇA</span>, +1 MEM<br>Necromancer 1</td>
+                                <td>Ara et cures un 10% del mal que fas a la vitalitat.<br>Aprèn <em>Bull Rush</em> (Poly) per moure't sense cooldown.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5-8</strong></td>
+                                <td>Tot a <span class="badge-stat">FORÇA</span><br>Warfare fins a 5<br>Necromancer a 2</td>
+                                <td>Talent Lv8: <span class="badge-talent">Armadura Viva (Living Armor)</span>.<br>Aprèn <em>Bone Cage</em> (Armadura massiva si hi ha cadàvers).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9-15</strong></td>
+                                <td>Maximitza <span class="badge-stat">FORÇA</span>, després <span class="badge-stat">ENGINY (WITS)</span>.<br>Maximitza Warfare (10).</td>
+                                <td>Talent Lv13: <span class="badge-talent">Cap Calent (Hothead)</span> (+10% Crit).<br>Skill: <em>Onslaught</em> (5 cops seguits).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equip</strong></td>
+                                <td colspan="2">Busca el <span class="badge-gear">Set del Devorador (Devourer Set)</span>. Les peces estan repartides pels 4 actes. Quan el tens complet, ets literalment immortal (Cooldowns resetegen en matar).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- IFAN -->
+        <div id="ifan" class="char-content">
+            <div class="char-grid">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/ifan-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Ifan'" alt="Ifan">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Ranger</span></p>
+                        <p><span class="stat-label">Atribut</span> <span class="stat-val">DESTRESA (FIN)</span></p>
+                        <p><span class="stat-label">Habilitat 1</span> <span class="stat-val">WARFARE</span></p>
+                        <p><span class="stat-label">Habilitat 2</span> <span class="stat-val">HUNTSMAN</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">Ballesta</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Full de Ruta: Ifan</h3>
+                    <p><strong>Nota Crítica:</strong> Pugem WARFARE perquè augmenta tot el dany físic. Huntsman només el pugem el mínim per les habilitats.</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Skills, Talents i Equip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>+2 <span class="badge-stat">FIN</span><br>1 Warfare, 1 Huntsman</td>
+                                <td>Talent: <span class="badge-talent">Verdugo (Executioner)</span>.<br>Skills: <em>Ricochet, Pin Down, Elemental Arrowheads</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-3</strong></td>
+                                <td>+2 <span class="badge-stat">FIN</span><br>1 Scoundrel, 2 Huntsman</td>
+                                <td>Aprèn <span class="badge-skill">Retirada Tàctica (Tactical Retreat)</span> i <span class="badge-skill">Adrenalina</span>.<br>Talent: <span class="badge-talent">Cap Calent</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>+1 <span class="badge-stat">FIN</span>, +1 WITS<br>Warfare a 2</td>
+                                <td><strong>ITEM CLAU:</strong> Parla amb el venedor Zaleskar (Pantans). Et regala la <span class="badge-gear">Shadow's Eye Crossbow</span>. Té atac perforant.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5-8</strong></td>
+                                <td>Tot a <span class="badge-stat">FIN</span><br>Warfare a 5</td>
+                                <td>Talent Lv8: <span class="badge-talent">Home Llunyà (Far Out Man)</span> per +2m de rang.<br>Skill: <em>Ballistic Shot</em> (Més mal com més lluny estiguis).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9-15</strong></td>
+                                <td>Maximitza <span class="badge-stat">FIN</span>, després <span class="badge-stat">WITS</span>.<br>Maximitza Warfare (10).</td>
+                                <td>Talent Lv13: <span class="badge-talent">Pudor (Stench)</span> (Els enemics melé t'ignoren).<br>Skill: <em>Arrow Spray</em> (A boca de canó fa molt mal).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equip</strong></td>
+                                <td colspan="2">Busca el <span class="badge-gear">Set del Voltor (Vulture Set)</span> a l'Acte 2. Et dona ales permanents i millora el rang i mal perforant.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOHSE -->
+        <div id="lohse" class="char-content">
+            <div class="char-grid">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/lohse-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Lohse'" alt="Lohse">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Physical Mage</span></p>
+                        <p><span class="stat-label">Atribut</span> <span class="stat-val">INTEL·LIGÈNCIA</span></p>
+                        <p><span class="stat-label">Habilitat 1</span> <span class="stat-val">WARFARE</span></p>
+                        <p><span class="stat-label">Habilitat 2</span> <span class="stat-val">NECRO</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">Vareta + Escut</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Full de Ruta: Lohse</h3>
+                    <p>La maga més rara però més forta. Els encanteris de sang fan mal físic, per tant escalen amb <strong>Warfare</strong>, no amb Necromància.</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Skills, Talents i Equip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>+2 <span class="badge-stat">INT</span><br>1 Warfare, 1 Necro</td>
+                                <td>Talent: <span class="badge-talent">Verdugo (Executioner)</span>.<br>Skill: <em>Bouncing Shield</em> (Equipa escut!). Fa mal segons l'armadura de l'escut.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-3</strong></td>
+                                <td>+2 <span class="badge-stat">INT</span><br>1 Pyro, 1 Hydro</td>
+                                <td><strong>CRAFTEIG SECRET:</strong> Combina qualsevol llibre Necro + qualsevol llibre Pyro = <span class="badge-skill">Explosió de Cadàver</span>.<br>Combina Necro + Hydro = <em>Pluja de Sang</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4-8</strong></td>
+                                <td>Tot a <span class="badge-stat">INT</span><br>Warfare a 5<br>Necro a 2</td>
+                                <td>Talent Lv3: <span class="badge-talent">Afinitat Elemental</span> (Encanteris barats sobre sang).<br>Talent Lv8: <span class="badge-talent">Sortilegi Salvatge</span> (Permet Crítics amb màgia).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9-15</strong></td>
+                                <td>Maximitza <span class="badge-stat">INT</span>, després <span class="badge-stat">WITS</span>.<br>Max Warfare (10), Necro (3).</td>
+                                <td>Skill DEFINITIVA (Nv 13): <span class="badge-skill">Grasp of the Starved</span>. Fa mal massiu a tothom sobre sang. Neteja pantalles.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equip</strong></td>
+                                <td colspan="2">Porta sempre un Escut amb molta Armadura Física (per Bouncing Shield). Vareta amb +Critical Chance.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- FANE -->
+        <div id="fane" class="char-content">
+            <div class="char-grid">
+                <div class="char-sidebar">
+                    <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/fane-portrait.jpg" 
+                         onerror="this.src='https://placehold.co/400x500/1a1a1d/c8aa6e?text=Fane'" alt="Fane">
+                    <div class="quick-stats">
+                        <p><span class="stat-label">Rol</span> <span class="stat-val">Invocador</span></p>
+                        <p><span class="stat-label">Atribut</span> <span class="stat-val">WITS / MEM</span></p>
+                        <p><span class="stat-label">Prioritat</span> <span class="stat-val">SUMMONING 10</span></p>
+                        <p><span class="stat-label">Arma</span> <span class="stat-val">Vareta + Escut</span></p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h3>Full de Ruta: Fane</h3>
+                    <p>Invocador pur. Els atributs no afecten el dany del teu dimoni, només el nivell d'habilitat. Fane aporta l'habilitat <em>Time Warp</em> (Torn extra).</p>
+                    <table class="level-table">
+                        <thead>
+                            <tr>
+                                <th width="10%">Nivell</th>
+                                <th width="30%">Atributs & Habilitats</th>
+                                <th>Skills, Talents i Equip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1-3</strong></td>
+                                <td>+MEM, +WITS, +CON<br>TOT A SUMMONING</td>
+                                <td>Talent: <span class="badge-talent">Totes les Mans (All Skilled Up)</span> nivell 2 per tenir +1 punt.<br>Skills: <em>Conjure Incarnate, Power Infusion, Farsight Infusion</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4-8</strong></td>
+                                <td>Balanceja WITS i MEM<br>SUMMONING A 10 (PRIORITAT)</td>
+                                <td>Busca anells i equip que doni "+1 Summoning".<br>Talent Lv3: <span class="badge-talent">Amic dels Animals</span>.<br>Al nivell 10 d'habilitat neix el <strong>Champion Incarnate</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9+</strong></td>
+                                <td>Max WITS (Iniciativa)<br>1 punt a cada element</td>
+                                <td>Diversifica per buffs:<br>- Pyro 1: <em>Haste, Peace of Mind</em><br>- Geo 1: <em>Fortify</em><br>- Hydro 1: <em>Armor of Frost</em><br>- Aero 2: <em>Teleportation, Nether Swap</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estratègia</strong></td>
+                                <td colspan="2">Fane ha de tenir màxima Iniciativa. Comença, tira <strong>Time Warp</strong> a la Sebille o Lohse, invoca el dimoni sobre SANG i es fa el mort o posa totems.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXTRAS -->
+        <div id="extras" class="char-content">
+            <div class="panel">
+                <h2>Builds Alternatives (Per si canvies l'equip)</h2>
+                
+                <h3>El Princep Roig (Red Prince) - Tanc Ofensiu</h3>
+                <p>Substitut ideal per a la Sebille si vols més resistència.</p>
+                <ul>
+                    <li><strong>Atributs:</strong> Força i Constitució.</li>
+                    <li><strong>Habilitats:</strong> Warfare (Max).</li>
+                    <li><strong>Clau:</strong> <span class="badge-skill">Escut Rebotador (Bouncing Shield)</span>. Aquesta habilitat és la teva font de mal principal. Necessites l'escut amb més armadura física de la botiga cada nivell.</li>
+                    <li><strong>Talents:</strong> Oportunista, Torturador (el seu alè de foc aplica cremada a través d'armadura màgica).</li>
+                </ul>
+
+                <hr style="border-color: #333; margin: 30px 0;">
+
+                <h3>Beast - Assassí (Rogue)</h3>
+                <p>Substitut per a l'Ifan si prefereixes melé.</p>
+                <ul>
+                    <li><strong>Atributs:</strong> Destresa (Finesse).</li>
+                    <li><strong>Habilitats:</strong> Scoundrel i Warfare (Pujats paral·lelament).</li>
+                    <li><strong>Clau:</strong> Dagues Duals. Sempre atacar per l'esquena (Backstab) per Crític garantit.</li>
+                    <li><strong>Talents:</strong> <span class="badge-talent">The Pawn (El Peó)</span>. Et dona 1 AP de moviment gratis per posicionar-te a l'esquena cada torn.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CONSELLS FINALS -->
+    <div class="tips-section">
+        <h2>Consells Finals del Mestre</h2>
+        <ul class="strategy-list">
+            <li><strong>El Poder dels Elfs:</strong> Sebille té l'habilitat <em>Flesh Sacrifice</em>. Usa-la SEMPRE la primera. Et dona dany, AP i crea sang per als teus combos (Elemental Affinity, fletxes d'Ifan, Invocació de Fane).</li>
+            <li><strong>Control de Masses (CC):</strong> L'ordre sempre és: Trencar Armadura Física -> Aplicar <em>Knockdown</em> (Ariet/Trepitjada). Un enemic a terra perd el torn. Si controles, guanyes.</li>
+            <li><strong>Llit de Dormir:</strong> Porta sempre un <em>Bedroll</em>. Usa'l després de CADA combat per curar-te al màxim i recuperar punts d'origen.</li>
+            <li><strong>Runes:</strong> A partir de l'Acte 2, posa runes de poder (les que donen atributs). Força a la Sebille, Intel·ligència a la Lohse, Finesse a l'Ifan. Al collaret sempre Runa de Flama (+Crit).</li>
         </ul>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'sebille')">Sebille (2H Warrior)</button>
-        <button class="tab-btn" onclick="openTab(event, 'ifan')">Ifan (Ranger)</button>
-        <button class="tab-btn" onclick="openTab(event, 'lohse')">Lohse (Blood Mage)</button>
-        <button class="tab-btn" onclick="openTab(event, 'fane')">Fane (Summoner)</button>
-        <button class="tab-btn" onclick="openTab(event, 'extras')">Extres (Red Prince/Beast)</button>
-    </div>
-
-    <!-- SEBILLE -->
-    <div id="sebille" class="char-content active">
-        <div>
-            <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/sebille-portrait.jpg" 
-                 onerror="this.src='https://placehold.co/300x400/1a1a1d/c8aa6e?text=Sebille'" class="char-img">
-            <div class="civil-box">
-                <p><strong>Rol:</strong> DPS Melé (Assassina de Titans)</p>
-                <p><strong>Atribut:</strong> FORÇA (STR)</p>
-                <p><strong>Civil:</strong> PERSUASIÓ</p>
-            </div>
-        </div>
-        <div>
-            <h2>Guia de Nivells: Sebille</h2>
-            <table>
-                <thead><tr><th>Nv</th><th>Atributs & Habilitats</th><th>Accions i Skills Clau</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td class="level-col">1</td>
-                        <td>+2 STR<br>Warfare 1, Polymorph 1</td>
-                        <td>Talent: <span class="talent">Verdugo (Executioner)</span>.<br>Skills: <span class="skill">Tentacle Lash</span>, Battle Stomp, Battering Ram.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">2</td>
-                        <td>+2 STR<br>Scoundrel 1</td>
-                        <td>Aprèn <span class="skill">Adrenalina</span>. <br>Combo: Sacrifici Carn + Adrenalina = Torn Explosiu.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">3</td>
-                        <td>+2 STR<br>Warfare 2</td>
-                        <td>Talent: <span class="talent">Oportunista</span>.<br>Aprèn <span class="skill">Battering Ram</span> si no la tens.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">4</td>
-                        <td>+1 STR, +1 MEM<br>Necromancer 1</td>
-                        <td>Aprèn <span class="skill">Bull Rush</span> (Polymorph).<br>Ara et cures pegant (Passiva Necro).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">5-7</td>
-                        <td>Tot a STR<br>Warfare fins a 5</td>
-                        <td>Aprèn <span class="skill">Phoenix Dive</span> (Salt).<br>Aprèn <span class="skill">Whirlwind</span> (Warfare).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">8</td>
-                        <td>+STR<br>Necromancer 2</td>
-                        <td>Talent: <span class="talent">Armadura Viva (Living Armor)</span>.<br>Aprèn <span class="skill">Bone Cage</span> (Necro).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">9-15</td>
-                        <td>Max STR, després WITS<br>Max Warfare (10)</td>
-                        <td>Nivell 13 Talent: <span class="talent">Cap Calent (Hothead)</span>.<br>Aconsegueix <span class="gear">Set del Devorador</span>.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">16+</td>
-                        <td>Tot a WITS<br>2-Handed al màxim</td>
-                        <td>Talent Final: <span class="talent">Duresa (Picture of Health)</span>.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- IFAN -->
-    <div id="ifan" class="char-content">
-        <div>
-            <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/ifan-portrait.jpg" 
-                 onerror="this.src='https://placehold.co/300x400/1a1a1d/c8aa6e?text=Ifan'" class="char-img">
-            <div class="civil-box">
-                <p><strong>Rol:</strong> Arquer / Sniper</p>
-                <p><strong>Atribut:</strong> DESTRESA (FIN)</p>
-                <p><strong>Civil:</strong> BARATA (Bartering)</p>
-            </div>
-        </div>
-        <div>
-            <h2>Guia de Nivells: Ifan</h2>
-            <p><em>Nota important: Pugem Warfare perquè Warfare = Dany Físic (incloent arcs). Huntsman només serveix per altura i skills.</em></p>
-            <table>
-                <thead><tr><th>Nv</th><th>Atributs & Habilitats</th><th>Accions i Skills Clau</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td class="level-col">1</td>
-                        <td>+2 FIN<br>Warfare 1, Huntsman 1</td>
-                        <td>Talent: <span class="talent">Verdugo (Executioner)</span>.<br>Skills: Ricochet, Pin Down, Elemental Arrowheads.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">2</td>
-                        <td>+2 FIN<br>Huntsman 2</td>
-                        <td>Aprèn <span class="skill">Tactical Retreat</span> (Moviment) i <span class="skill">First Aid</span>.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">3</td>
-                        <td>+2 FIN<br>Scoundrel 1</td>
-                        <td>Talent: <span class="talent">Cap Calent (Hothead)</span>.<br>Aprèn <span class="skill">Adrenalina</span>.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">4</td>
-                        <td>+1 FIN, +1 WITS<br>Warfare 2</td>
-                        <td><strong>CRUCIAL:</strong> Ves a parlar amb Zaleskar (Pantans) per rebre la <span class="gear">Ballesta Shadow's Eye</span> (Ignora armadura).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">5-8</td>
-                        <td>Tot a FIN<br>Warfare fins a 5</td>
-                        <td>Talent Lv8: <span class="talent">Home Llunyà (Far Out Man)</span>.<br>Aprèn <span class="skill">Ballistic Shot</span> (Warfare).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">9-15</td>
-                        <td>Max FIN, després WITS<br>Max Warfare (10)</td>
-                        <td>Talent Lv13: <span class="talent">Pudor (Stench)</span> (perquè no et peguin).<br>Busca el <span class="gear">Set del Voltor (Vulture)</span> a l'Acte 2.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">16+</td>
-                        <td>Tot a WITS<br>Scoundrel (Crit Dmg)</td>
-                        <td>Talent Final: <span class="talent">Recuperació de Fletxes</span> o <span class="talent">Canó de Vidre</span> (arriscat).</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- LOHSE -->
-    <div id="lohse" class="char-content">
-        <div>
-            <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/lohse-portrait.jpg" 
-                 onerror="this.src='https://placehold.co/300x400/1a1a1d/c8aa6e?text=Lohse'" class="char-img">
-            <div class="civil-box">
-                <p><strong>Rol:</strong> Maga de Sang (Physical Nuke)</p>
-                <p><strong>Atribut:</strong> INTEL·LIGÈNCIA (INT)</p>
-                <p><strong>Civil:</strong> MESTRE SABER (Lore)</p>
-            </div>
-        </div>
-        <div>
-            <h2>Guia de Nivells: Lohse</h2>
-            <p><em>Equipa-la amb Vareta + Escut. L'habilitat "Bouncing Shield" serà el teu atac bàsic.</em></p>
-            <table>
-                <thead><tr><th>Nv</th><th>Atributs & Habilitats</th><th>Accions i Skills Clau</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td class="level-col">1</td>
-                        <td>+2 INT<br>Warfare 1, Necro 1</td>
-                        <td>Talent: <span class="talent">Verdugo (Executioner)</span>.<br>Skills: Mosquito Swarm, Bouncing Shield (Warfare).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">2</td>
-                        <td>+1 INT, +1 MEM<br>Pyro 1</td>
-                        <td><strong>CRAFTING SECRET:</strong> Combina llibre Necro + llibre Pyro = <span class="skill">Corpse Explosion</span>. És el teu millor encanteri.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">3</td>
-                        <td>+2 INT<br>Hydro 1</td>
-                        <td>Talent: <span class="talent">Afinitat Elemental</span>.<br>Aprèn <span class="skill">Pluja de Sang (Blood Rain)</span> (Hydro+Necro book).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">4-8</td>
-                        <td>Tot a INT<br>Warfare fins a 5</td>
-                        <td>Talent Lv8: <span class="talent">Sortilegi Salvatge (Savage Sortilege)</span>. IMPRESCINDIBLE perquè la màgia faci crític.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">9-13</td>
-                        <td>Max INT, després WITS<br>Max Warfare (10)</td>
-                        <td>Aprèn <span class="skill">Grasp of the Starved</span> (Necro 2).<br>Aprèn <span class="skill">Teleportation</span> (Aero 2).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">16+</td>
-                        <td>Tot a WITS<br>Scoundrel (Crit Dmg)</td>
-                        <td>La teva rotació: Teleportar enemics junts -> Blood Rain -> Grasp of the Starved.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- FANE -->
-    <div id="fane" class="char-content">
-        <div>
-            <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/fane-portrait.jpg" 
-                 onerror="this.src='https://placehold.co/300x400/1a1a1d/c8aa6e?text=Fane'" class="char-img">
-            <div class="civil-box">
-                <p><strong>Rol:</strong> Invocador / Suport</p>
-                <p><strong>Atribut:</strong> CON / MEM / WITS</p>
-                <p><strong>Civil:</strong> ROBATORI (Thievery)</p>
-            </div>
-        </div>
-        <div>
-            <h2>Guia de Nivells: Fane</h2>
-            <p><em>Fane no necessita INT ni STR. La seva "Invocació" té stats propis. Ell només necessita sobreviure i memòria.</em></p>
-            <table>
-                <thead><tr><th>Nv</th><th>Atributs & Habilitats</th><th>Accions i Skills Clau</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td class="level-col">1</td>
-                        <td>+1 CON, +1 WITS<br>Summoning 2</td>
-                        <td>Talent: <span class="talent">Totes les Mans (All Skilled Up)</span> per més punts.<br>Skill: Conjure Incarnate, Elemental Totem.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">2</td>
-                        <td>+2 MEM<br>Summoning 3</td>
-                        <td>Skills: <span class="skill">Power Infusion</span> (Knockdown) i <span class="skill">Farsight Infusion</span> (Ranged).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">3</td>
-                        <td>+1 WITS, +1 MEM<br>Scoundrel 1</td>
-                        <td>Aprèn <span class="skill">Adrenalina</span>.<br>Talent: <span class="talent">Amic dels Animals (Pet Pal)</span> per veure tot el lore.</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">4-8</td>
-                        <td>Balanceja MEM i WITS<br>TOT A SUMMONING</td>
-                        <td><strong>Objectiu:</strong> Arribar a Summoning 10 el més ràpid possible.<br>Al Nivell 10, el teu dimoni es fa <span class="gear">Champion Incarnate</span> (Gegant).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">9+</td>
-                        <td>Max WITS (Iniciativa)<br>1 punt a cada màgia</td>
-                        <td>Posa 1 punt a Pyro (Haste/Peace of Mind), 1 a Geo (Fortify), 1 a Hydro (Armor of Frost), 2 Aero (Teleport).</td>
-                    </tr>
-                    <tr>
-                        <td class="level-col">Estratègia</td>
-                        <td colspan="2">1. Fane comença (Wits alt) -> Usa <strong>Time Warp</strong> (Skill racial) sobre Lohse o Sebille.<br>2. Invoca el Dimoni sobre SANG.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- EXTRAS -->
-    <div id="extras" class="char-content">
-        <div>
-            <img src="https://divinityoriginalsin2.wiki.fextralife.com/file/Divinity-Original-Sin-2/red-prince-portrait.jpg" 
-                 onerror="this.src='https://placehold.co/300x400/1a1a1d/c8aa6e?text=Extras'" class="char-img">
-            <div class="civil-box">
-                <p><strong>Alternativa Tanc:</strong> Red Prince</p>
-                <p><strong>Alternativa Rogue:</strong> Beast</p>
-            </div>
-        </div>
-        <div>
-            <h2>Builds Alternatives</h2>
-            
-            <h3>Red Prince (Tanc Control)</h3>
-            <p>Si no t'agrada l'estil "Suïcida" de la Sebille, el Red Prince és la versió segura.</p>
-            <ul>
-                <li><strong>Stats:</strong> Max FORÇA, Max CONSTITUCIÓ.</li>
-                <li><strong>Skill Principal:</strong> Max WARFARE.</li>
-                <li><strong>Habilitat Clau:</strong> <span class="skill">Bouncing Shield</span>. Necessites l'escut amb més armadura física que trobis a la botiga. Aquesta habilitat fa rebotar l'escut entre enemics i pega duríssim.</li>
-                <li><strong>Talent:</strong> <em>Torturador</em> (per aplicar cremades amb l'alè de foc).</li>
-            </ul>
-
-            <hr style="border-color: #444; margin: 20px 0;">
-
-            <h3>Beast (Duelista / Rogue)</h3>
-            <p>Substitut per l'Ifan si prefereixes melé.</p>
-            <ul>
-                <li><strong>Stats:</strong> Max DESTRESA.</li>
-                <li><strong>Habilitats:</strong> Max WARFARE (Dany) i SCOUNDREL (Crític).</li>
-                <li><strong>Armes:</strong> Dues dagues.</li>
-                <li><strong>Joc:</strong> Has d'usar <span class="skill">Backlash</span> per saltar a l'esquena de l'enemic. L'esquena sempre és CRÍTIC garantit.</li>
-                <li><strong>Talent:</strong> <em>The Pawn (El Peó)</em>. Et regala 1 AP de moviment per torn per posicionar-te a l'esquena.</li>
-            </ul>
-        </div>
     </div>
 
 </div>
 
 <script>
-    function openTab(evt, charName) {
+    function openChar(evt, charName) {
+        // Hide all elements
         var i, content, tabs;
         content = document.getElementsByClassName("char-content");
         for (i = 0; i < content.length; i++) {
-            content[i].style.display = "none";
             content[i].classList.remove("active");
         }
+        
+        // Deactivate tabs
         tabs = document.getElementsByClassName("tab-btn");
         for (i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove("active");
         }
-        var selected = document.getElementById(charName);
-        selected.style.display = "grid";
-        setTimeout(() => selected.classList.add("active"), 10);
+
+        // Show current and activate tab
+        document.getElementById(charName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
-
-    // Obrir Sebille per defecte
-    document.getElementById("sebille").style.display = "grid";
 </script>
 
 </body>
