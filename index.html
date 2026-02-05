@@ -189,6 +189,45 @@
 
         .level-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
 
+        /* GEAR & ROTATION BOXES */
+        .extra-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .extra-info-grid { grid-template-columns: 1fr; }
+        }
+
+        .info-box {
+            background: #19191d;
+            border: 1px solid #444;
+            padding: 20px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .info-box h4 {
+            color: var(--gold);
+            margin-top: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            font-family: var(--font-title);
+        }
+
+        .rotation-step {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 2px solid var(--blood);
+        }
+
+        .gear-item {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .gear-act { color: var(--mana); font-weight: bold; margin-right: 5px; }
+
         /* COLORS & BADGES */
         .badge-skill { color: #ffbd4a; font-weight: bold; }
         .badge-talent { color: #ff6b6b; font-weight: bold; }
@@ -335,12 +374,26 @@
                                 <td>Maximiza <span class="badge-stat">FUERZA</span>, luego <span class="badge-stat">INGENIO (WITS)</span>.<br>Maximiza Contienda (10).</td>
                                 <td>Talento Nv13: <span class="badge-talent">Impulsivo (Hothead)</span> (+10% Crítico).<br>Skill: <em>Acometida (Onslaught)</em> (5 golpes seguidos).</td>
                             </tr>
-                            <tr>
-                                <td><strong>Equipo</strong></td>
-                                <td colspan="2">Busca el <span class="badge-gear">Conjunto del Devorador (Devourer Set)</span>. Las piezas están repartidas por los 4 actos.</td>
-                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="extra-info-grid">
+                        <div class="info-box">
+                            <h4>Equipamiento Clave por Acto</h4>
+                            <div class="gear-item"><span class="gear-act">Acto 1:</span> <strong>Hendedora (Sundering Cleaver)</strong>. Cómprala a Zaleskar en los Pantanos.</div>
+                            <div class="gear-item"><span class="gear-act">Acto 2:</span> <strong>Martillo de Fuente de Lohar</strong>. Recompensa de misión "Sombra sobre Driftwood". Brutal Crítico y Derribo.</div>
+                            <div class="gear-item"><span class="gear-act">Acto 4:</span> <strong>Falone</strong>. Una guadaña única en la Catedral de Arx.</div>
+                            <div class="gear-item"><span class="gear-act">Especial:</span> <strong>Conjunto del Devorador</strong>. Reúne las piezas en los 4 actos. Resetea cooldowns al matar.</div>
+                        </div>
+                        <div class="info-box">
+                            <h4>Rotación de Combate</h4>
+                            <div class="rotation-step">1. <strong>Embestida de Toro</strong> / <strong>Salto del Fénix</strong> para entrar en el grupo enemigo.</div>
+                            <div class="rotation-step">2. <strong>Sacrificio de Carne</strong> (Racial) + <strong>Adrenalina</strong>. Ahora tienes mucho AP y daño.</div>
+                            <div class="rotation-step">3. <strong>Torbellino</strong> para bajar armaduras a varios enemigos.</div>
+                            <div class="rotation-step">4. <strong>Pisotón de Batalla</strong> o <strong>Ariete</strong>. Si no tienen armadura, caen al suelo (Derribo).</div>
+                            <div class="rotation-step">5. Si matas -> <strong>Verdugo</strong> se activa (+2 AP). Usa <em>Camuflaje</em> si te quedas expuesta.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -396,12 +449,26 @@
                                 <td>Maximiza <span class="badge-stat">PERICIA</span>, luego <span class="badge-stat">INGENIO</span>.<br>Maximiza Contienda (10).</td>
                                 <td>Talento Nv13: <span class="badge-talent">Hedor (Stench)</span> (Los enemigos melé te ignoran).<br>Skill: <em>Lluvia de Flechas</em> (A bocajarro hace mucho daño).</td>
                             </tr>
-                            <tr>
-                                <td><strong>Equipo</strong></td>
-                                <td colspan="2">Busca el <span class="badge-gear">Conjunto del Buitre (Vulture Set)</span> en el Acto 2. Te da alas permanentes, rango y daño perforante.</td>
-                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="extra-info-grid">
+                        <div class="info-box">
+                            <h4>Equipamiento Clave por Acto</h4>
+                            <div class="gear-item"><span class="gear-act">Acto 1:</span> <strong>Ojo de las Sombras (Shadow's Eye)</strong>. La mejor arma del acto 1 (Zaleskar).</div>
+                            <div class="gear-item"><span class="gear-act">Acto 2:</span> <strong>Conjunto del Buitre (Vulture Set)</strong>. Reliquia de Rivellon. Da alas, inmunidad a ceguera y mucho rango.</div>
+                            <div class="gear-item"><span class="gear-act">Acto 4:</span> <strong>Deadeye's Crossbow</strong>. Se encuentra en Arx.</div>
+                            <div class="gear-item"><span class="gear-act">General:</span> Prioriza siempre Ballestas sobre Arcos por el daño base más alto.</div>
+                        </div>
+                        <div class="info-box">
+                            <h4>Rotación de Combate</h4>
+                            <div class="rotation-step">1. <strong>Retirada Táctica</strong> para subir a terreno elevado (+Daño por altura).</div>
+                            <div class="rotation-step">2. <strong>Animar</strong> (Si es Humano) o Sacrificio (Si es Elfo) + <strong>Puntas de Flecha Elementales</strong> sobre SANGRE (Daño físico extra).</div>
+                            <div class="rotation-step">3. <strong>Disparo Balístico</strong> al objetivo más lejano (Posible oneshot).</div>
+                            <div class="rotation-step">4. <strong>Flecha de Derribo</strong> a cualquier enemigo sin armadura física.</div>
+                            <div class="rotation-step">5. <strong>Adrenalina</strong> si necesitas rematar para activar Verdugo.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -452,12 +519,25 @@
                                 <td>Maximiza <span class="badge-stat">INT</span>, luego <span class="badge-stat">INGENIO</span>.<br>Max Contienda (10), Nigro (3).</td>
                                 <td>Skill DEFINITIVA (Nv 13): <span class="badge-skill">Agarre de los Hambrientos (Grasp of the Starved)</span>. Daño masivo a todos sobre sangre. Limpia pantallas.</td>
                             </tr>
-                            <tr>
-                                <td><strong>Equipo</strong></td>
-                                <td colspan="2">Lleva siempre un Escudo con mucha Armadura Física (para Escudo Rebotador). Varita con +Probabilidad de Crítico.</td>
-                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="extra-info-grid">
+                        <div class="info-box">
+                            <h4>Equipamiento Clave por Acto</h4>
+                            <div class="gear-item"><span class="gear-act">General:</span> <strong>Escudos</strong>. Cada vez que subas de nivel, visita la tienda y compra el Escudo con más Armadura Física disponible. Es la munición de tu habilidad <em>Escudo Rebotador</em>.</div>
+                            <div class="gear-item"><span class="gear-act">Arma:</span> Varita con +Probabilidad de Crítico o +Inteligencia. No la usarás para disparar, solo por los stats.</div>
+                            <div class="gear-item"><span class="gear-act">Joyas:</span> Busca anillos con hueco para runas (Pon Runa de Poder Gigante: +3 INT).</div>
+                        </div>
+                        <div class="info-box">
+                            <h4>Rotación de Combate (El Nuke)</h4>
+                            <div class="rotation-step">1. <strong>Teletransporte</strong> para juntar enemigos (mejor si es sobre un cadáver existente).</div>
+                            <div class="rotation-step">2. <strong>Lluvia de Sangre</strong> sobre el grupo de enemigos.</div>
+                            <div class="rotation-step">3. <strong>Agarre de los Hambrientos</strong>. Manos salen del suelo y hacen daño masivo físico. Suele matar a todo.</div>
+                            <div class="rotation-step">4. Si queda alguien vivo y hay un cuerpo: <strong>Explosión de Cadáver</strong>.</div>
+                            <div class="rotation-step">5. <strong>Escudo Rebotador</strong> para rematar a distancia media.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -502,12 +582,25 @@
                                 <td>Max INGENIO (Iniciativa)<br>1 punto a cada elemento</td>
                                 <td>Diversifica para buffs:<br>- Piro 1: <em>Prisa, Paz Mental</em><br>- Geo 1: <em>Fortificar</em><br>- Hidro 1: <em>Armadura de Escarcha</em><br>- Aero 2: <em>Teletransporte</em></td>
                             </tr>
-                            <tr>
-                                <td><strong>Estrategia</strong></td>
-                                <td colspan="2">Fane debe tener máxima Iniciativa. Empieza, tira <strong>Distorsión Temporal</strong> a Sebille o Lohse, invoca el demonio sobre SANGRE y se hace el muerto.</td>
-                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="extra-info-grid">
+                        <div class="info-box">
+                            <h4>Equipamiento Clave por Acto</h4>
+                            <div class="gear-item"><span class="gear-act">Acto 1:</span> <strong>Anillo del Fiel</strong> (En la cueva de las gárgolas). Da bonificación.</div>
+                            <div class="gear-item"><span class="gear-act">General:</span> Tu daño depende SOLAMENTE del nivel de Invocación. Compra cualquier anillo, casco o armadura que diga <strong>+1 Invocación</strong>. Si no lo tiene, no sirve.</div>
+                            <div class="gear-item"><span class="gear-act">Escudo:</span> Igual que Lohse, busca el que tenga más defensa para sobrevivir.</div>
+                        </div>
+                        <div class="info-box">
+                            <h4>Rotación de Combate (El titiritero)</h4>
+                            <div class="rotation-step">1. <strong>Distorsión Temporal</strong> sobre Sebille o Lohse (¡Turno extra para ellas!).</div>
+                            <div class="rotation-step">2. <strong>Conjurar Encarnado</strong> sobre superficie de SANGRE (Vital). El demonio sale con armadura física extra y habilidad <em>Enjambre de Mosquitos</em>.</div>
+                            <div class="rotation-step">3. <strong>Infusión de Poder</strong> + <strong>Infusión de Vista Lejana</strong> sobre tu demonio.</div>
+                            <div class="rotation-step">4. Usar Tótems o buffs (Prisa/Paz Mental) sobre los aliados.</div>
+                            <div class="rotation-step">5. Hacerse el muerto si te van a atacar.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -560,6 +653,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="info-box" style="margin-top: 20px;">
+                        <h4>Rotación Rápida</h4>
+                        <p>Lanzar Escudo Rebotador -> Latigazo de Tentáculo -> Pisotón de Batalla. Mantener siempre el escudo actualizado en tiendas.</p>
+                    </div>
                 </div>
             </div>
 
@@ -608,6 +705,10 @@
                             </tr>
                         </tbody>
                     </table>
+                     <div class="info-box" style="margin-top: 20px;">
+                        <h4>Rotación Rápida</h4>
+                        <p>Contragolpe (Espalda) -> Adrenalina -> Ataques Básicos (Críticos garantizados) -> Cuchillo de Sierra (Rematar) -> Capa y Espada (Huir).</p>
+                    </div>
                 </div>
             </div>
 
